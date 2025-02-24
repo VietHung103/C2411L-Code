@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./table_style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <div class="table-container">
+        <div class="header">
+            <div class="title">
+                <div class="above-title">
+                    <h3>Vendor movements</h3>
+                    <p>240 vendors</p>
+                </div>
+                <div class="under-title">
+                    <p>Keep track of vendor and their security ratings.</p>
+                </div>
+            </div>
+            <div class="header-button">
+                <div class="import-button">
+                    <i class="fa-solid fa-upload"></i>
+                    <p>Import</p>
+                </div>
+                <div class="add-button">
+                    <i class="fa-solid fa-plus"></i>
+                    <p>Add</p>
+                </div>
+            </div>
+        </div>
+        <div class="navigator">
+            <div class="tabs">
+                <button class="tab active">View All</button>
+                <button class="tab">Monitored</button>
+                <button class="tab">Text</button>
+            </div>
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="🔍 Search" />
+                <button class="filter-btn">☰ Filters</button>
+            </div>
+        </div>
+        <div class="content-table">
+            <table class="vendor-table">
+                <thead>
+                    <tr>
+                        <th><input type="checkbox"></th>
+                        <th>Vendor</th>
+                        <th>Rating</th>
+                        <th>Last assessed</th>
+                        <td>License use</td>
+                        <td>Actions</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="checkbox"></td>
+                        <td class="vendor-infor">
+                            <img src="https://static.vecteezy.com/system/resources/previews/022/043/978/non_2x/catalog-icon-style-vector.jpg" alt="" class="vendor-logo">
+                            <div>
+                                <div class="vendor-name">Catalog</div>
+                                <div class="vendor-url">catalog.io</div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="progress-container">
+                                <div class="progress-bar" style="width: 60%;"></div>
+                            </div>
+                            <span class="rating-score">60</span>
+                            <span class="rating-change up">▲ 5%</span>
+                        </td>
+                        <td>22 Jan 2022</td>
+                        <td>
+                            <span class="badge active">● Active</span>
+                            <span class="badge blue">Customer data</span>
+                            <span class="badge gray">Admin</span>
+                            <span class="badge extra">+4</span>
+                        </td>
+                        <td class="actions">
+                            <button class="icon-btn">🗑️</button>
+                            <button class="icon-btn">✏️</button>
+                        </td>
+                    </tr>
+                </tbody>
+                <tbody>
+                    <tr>
+                        <td><input type="checkbox"></td>
+                        <td class="vendor-infor">
+                            <img src="https://cdn-icons-png.flaticon.com/512/2993/2993767.png" alt="" class="vendor-logo">
+                            <div>
+                                <div class="vendor-name">Circooles</div>
+                                <div class="vendor-url">circooles.io</div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="progress-container">
+                                <div class="progress-bar" style="width: 72%;"></div>
+                            </div>
+                            <span class="rating-score">72</span>
+                            <span class="rating-change down">▼ 4%</span>
+                        </td>
+                        <td>22 Jan 2022</td>
+                        <td>
+                            <span class="badge active">● Active</span>
+                            <span class="badge blue">Customer data</span>
+                            <span class="badge gray">Admin</span>
+                            <span class="badge extra">+4</span>
+                        </td>
+                        <td class="actions">
+                            <button class="icon-btn">🗑️</button>
+                            <button class="icon-btn">✏️</button>
+                        </td>
+                    </tr>
+                </tbody>
+                <tbody>
+                    <tr>
+                        <td><input type="checkbox"></td>
+                        <td class="vendor-infor">
+                            <img src="https://huggingface.co/datasets/huggingchat/models-logo/resolve/main/cohere-logo.png" alt="" class="vendor-logo">
+                            <div>
+                                <div class="vendor-name">Command +R</div>
+                                <div class="vendor-url">cmdr.ai</div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="progress-container">
+                                <div class="progress-bar" style="width: 78%;"></div>
+                            </div>
+                            <span class="rating-score">78</span>
+                            <span class="rating-change up">▲ 6%</span>
+                        </td>
+                        <td>22 Jan 2022</td>
+                        <td>
+                            <span class="badge active">● Active</span>
+                            <span class="badge blue">Customer data</span>
+                            <span class="badge gray">Admin</span>
+                            <span class="badge extra">+4</span>
+                        </td>
+                        <td class="actions">
+                            <button class="icon-btn">🗑️</button>
+                            <button class="icon-btn">✏️</button>
+                        </td>
+                    </tr>
+                </tbody>
+                <tbody>
+                    <tr>
+                        <td><input type="checkbox"></td>
+                        <td class="vendor-infor">
+                            <img src="http://sweetclipart.com/multisite/sweetclipart/files/hourglass_silhouette.png" alt="" class="vendor-logo">
+                            <div>
+                                <div class="vendor-name">Hourglass</div>
+                                <div class="vendor-url">hourglass.app</div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="progress-container">
+                                <div class="progress-bar" style="width: 38%;"></div>
+                            </div>
+                            <span class="rating-score">38</span>
+                            <span class="rating-change up">▲ 8%</span>
+                        </td>
+                        <td>22 Jan 2022</td>
+                        <td>
+                            <span class="badge active">● Active</span>
+                            <span class="badge blue">Customer data</span>
+                            <span class="badge gray">Admin</span>
+                            <span class="badge extra">+4</span>
+                        </td>
+                        <td class="actions">
+                            <button class="icon-btn">🗑️</button>
+                            <button class="icon-btn">✏️</button>
+                        </td>
+                    </tr>
+                </tbody>
+                <tbody>
+                    <tr>
+                        <td><input type="checkbox"></td>
+                        <td class="vendor-infor">
+                            <img src="https://static.vecteezy.com/system/resources/previews/002/368/699/original/layers-icon-free-vector.jpg" alt="" class="vendor-logo">
+                            <div>
+                                <div class="vendor-name">Layers</div>
+                                <div class="vendor-url">getlayer.io</div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="progress-container">
+                                <div class="progress-bar" style="width: 42%;"></div>
+                            </div>
+                            <span class="rating-score">42</span>
+                            <span class="rating-change up">▼ 1%</span>
+                        </td>
+                        <td>22 Jan 2022</td>
+                        <td>
+                            <span class="badge active">● Active</span>
+                            <span class="badge blue">Customer data</span>
+                            <span class="badge gray">Admin</span>
+                            <span class="badge extra">+4</span>
+                        </td>
+                        <td class="actions">
+                            <button class="icon-btn">🗑️</button>
+                            <button class="icon-btn">✏️</button>
+                        </td>
+                    </tr>
+                </tbody>
+                <tbody>
+                    <tr>
+                        <td><input type="checkbox"></td>
+                        <td class="vendor-infor">
+                            <img src="https://cdn-icons-png.flaticon.com/512/14985/14985291.png" alt="" class="vendor-logo">
+                            <div>
+                                <div class="vendor-name">Quotient</div>
+                                <div class="vendor-url">quotient.io</div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="progress-container">
+                                <div class="progress-bar" style="width: 66%;"></div>
+                            </div>
+                            <span class="rating-score">66</span>
+                            <span class="rating-change up">▼ 1%</span>
+                        </td>
+                        <td>22 Jan 2022</td>
+                        <td>
+                            <span class="badge active">● Active</span>
+                            <span class="badge blue">Customer data</span>
+                            <span class="badge gray">Admin</span>
+                            <span class="badge extra">+4</span>
+                        </td>
+                        <td class="actions">
+                            <button class="icon-btn">🗑️</button>
+                            <button class="icon-btn">✏️</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
