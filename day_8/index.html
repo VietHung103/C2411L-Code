@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <h2>Hien thi tat ca user</h2>
+    <table class="table">
+      <tr>
+        <th>name</th>
+        <th>age</th>
+        <th>city</th>
+        <th>id</th>
+      </tr>
+      <tbody id="user"></tbody>
+      <tbody id="age"></tbody>
+      <tbody id="id"></tbody>
+    </table>
+
+    <script>
+      const infor = [
+        { name: "John Doe", age: 30, city: "New York", id: 12345 },
+        { name: "Jane Smith", age: 28, city: "Los Angeles", id: 67890 },
+        { name: "Mike Johnson", age: 35, city: "Chicago"},
+        { name: "Emily Davis", age: 15, city: "San Francisco", id: 24680 },
+        { name: "Michael Brown", age: 40, city: "Seattle", id: 35791 }
+      ];
+      const abc = infor.map((item) => {
+        return `<tr>
+            <td>${item.name}</td>
+            <td>${item.age}</td>
+            <td>${item.city}</td>
+            <td>${item.id}</td>
+                </tr>>`;
+      });
+      document.getElementById("user").innerHTML = abc;
+      const age = infor.filter(myfunction).map((item) => {
+        return `<tr>
+            <td>${item.name}</td>
+            <td>${item.age}</td>
+            <td>${item.city}</td>
+            <td>${item.id}</td>
+                </tr>`;
+      });
+      function myfunction(item) {
+        return item.age >= 20;
+      }
+      document.getElementById("age").innerHTML = age;
+
+      let check_id = infor.filter(myfunction_1).map((item) => {
+        return `<tr>
+            <td>${item.name}</td>
+            <td>${item.age}</td>
+            <td>${item.city}</td>
+            <td>${item.id}</td>
+                </tr>`;
+      });
+      function myfunction_1(item) {
+        return item.id != null || item.id != undefined;
+      }
+      document.getElementById("id").innerHTML = check_id;
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>

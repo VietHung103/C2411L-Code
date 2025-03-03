@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TodoApp</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <h3>TodoApp</h3>
+    <form id="todoForm" class="form">
+      <label for="title">Title:</label>
+      <input type="text" name="title" id="title" required />
+
+      <label for="startDate">Start Time:</label>
+      <input type="datetime-local" name="startDate" id="startDate" required />
+
+      <label for="endDate">End Time:</label>
+      <input type="datetime-local" name="endDate" id="endDate" required />
+
+      <label for="typeofwork">Type of Work:</label>
+      <select name="typeofwork" id="typeofwork">
+        <option value="work">Work</option>
+        <option value="personal">Entertainment</option>
+      </select>
+
+      <button type="submit">Submit</button>
+    </form>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Start Time</th>
+          <th>End Time</th>
+          <th>Type of Work</th>
+        </tr>
+      </thead>
+      <tbody id="todoList"></tbody>
+    </table>
+
+    <script>
+      document.getElementById("todoForm").addEventListener("submit", function (event) {
+        event.preventDefault(); // Prevent form refresh
+
+        // Select all input and select elements inside the form
+        const formElements = document.querySelectorAll("#todoForm input, #todoForm select");
+
+        // Create an object to store values
+        let formData = {};
+        formElements.forEach((input) => {
+          formData[input.name] = input.value; // Store values dynamically
+        });
+
+        // Create new table row
+        const newRow = document.createElement("tr");
+        newRow.innerHTML = `
+          <td>${formData.title}</td>
+          <td>${formData.startDate}</td>
+          <td>${formData.endDate}</td>
+          <td>${formData.typeofwork}</td>
+        `;
+
+        // Append row to table
+        document.getElementById("todoList").appendChild(newRow);
+
+        // Clear form fields after submission
+        document.getElementById("todoForm").reset();
+      });
+    </script>
+  </body>
+</html>

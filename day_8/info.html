@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./info.css">
+</head>
+<body>
+    <form action="" id="info-form">
+        <div>
+            <label for="name">Name: </label>
+            <input type="text" id="name" name="name">
+        </div>
+        <div>
+            <label for="price">Price: </label>
+            <input type="text" id="price" name="price">
+        </div>
+        <button type="submit">Sumbit</button>
+    </form>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody id="info-table">
+            
+        </tbody>
+    </table>
+    <script>
+        document.getElementById("info-form").addEventListener("submit", function(event){
+           event.preventDefault();
+           
+           const formElements = document.querySelectorAll("#info-form input");
+
+           let formData = {};
+           formElements.forEach((input) => {
+              formData[input.name] = input.value;
+           });
+           const newElement = document.createElement("tr");
+            newElement.innerHTML = `
+                <td>${formData.name}</td>
+                <td>${formData.price}</td>
+            `;
+           document.getElementById("info-table").appendChild(newElement);
+
+        });
+    </script>
+</body>
+</html>
