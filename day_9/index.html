@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TodoApp</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <h3>TodoApp</h3>
+    <form id="todoForm" action="" class="form">
+      <label for="title">Title:</label>
+      <input type="text" name="title" id="title" />
+
+      <label for="startDate">StartTime:</label>
+      <input type="datetime-local" name="startDate" id="startDate" />
+
+      <label for="endDate">EndTime:</label>
+      <input type="datetime-local" name="endDate" id="endDate" />
+
+      <label for="typeofwork">TypeOfWork:</label>
+      <select name="typeofwork" id="typeofwork">
+        <option value="work">Work</option>
+        <option value="personal">Entertainment</option>
+      </select>
+      <button type="submit" id="btn">Sumbit</button>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Start Time</th>
+            <th>End Time</th>
+            <th>Type of Work</th>
+          </tr>
+        </thead>
+        <tbody id="todoList"></tbody>
+      </table>
+      <script>
+        document.getElementById("todoForm").addEventListener("submit", function(event){
+            event.preventDefault();
+            
+            const formElements = document.querySelectorAll("#todoForm input, #todoForm select");
+            
+            let formData = {};
+            formElements.forEach((input) => {
+              formData[input.name] = input.value;
+
+            });
+            
+            const newRow = document.createElement("tr");
+            newRow.innerHTML = `
+            <td>${formData.title}</td>
+            <td>${formData.startDate}</td>
+            <td>${formData.endDate}</td>
+            <td>${formData.typeofwork}</td>
+            `;
+            document.getElementById("todoList").appendChild(newRow);
+            document.getElementById("todoForm").reset();
+        });
+      </script>
+    </form>
+  </body>
+</html>
