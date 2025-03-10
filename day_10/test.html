@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Category & Product Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        form {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .container {
+            display: flex;
+            gap: 20px;
+        }
+        .list {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Category Management</h2>
+    <form id="categoryForm">
+        <label>Name: <input type="text" id="categoryName" required></label>
+        <label>Description: <input type="text" id="categoryDesc" required></label>
+        <button type="submit">Add Category</button>
+    </form>
+    <ul id="categoryList" class="list"></ul>
+
+    <h2>Product Management</h2>
+    <form id="productForm">
+        <label>ID: <input type="text" id="productId" required></label>
+        <label>Name: <input type="text" id="productName" required></label>
+        <label>Price: <input type="number" id="productPrice" required></label>
+        <label>Old Price: <input type="number" id="productOldPrice"></label>
+        <label>Category: 
+            <select id="productCategory" required>
+                <option value="">Select Category</option>
+            </select>
+        </label>
+        <label>Description: <input type="text" id="productDesc" required></label>
+        <label>Image URL: <input type="url" id="productImage" required></label>
+        <button type="submit">Add Product</button>
+    </form>
+    <ul id="productList" class="list"></ul>
+
+    <script>
+        const categoryForm = document.getElementById('categoryForm');
+        const productForm = document.getElementById('productForm');
+        const categoryList = document.getElementById('categoryList');
+        const productList = document.getElementById('productList');
+        const productCategory = document.getElementById('productCategory');
+        let categories = [];
+
+        function generateRandomId() {
+            return Math.random().toString(36).substr(2, 9);
+        }
+
+        categoryForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const name = document.getElementById('categoryName').value;
+            const desc = document.getElementById('categoryDesc').value;
+            const id = generateRandomId();
+            categories.push({ id, name });
+            
+            const option = document.createElement('option');
+            option.value = id;
+            option.textContent = name;
+            productCategory.appendChild(option);
+            console.log(categories);
+
+            const li = document.createElement('li');
+            li.textContent = `ID: ${id} - ${name} - ${desc}`;
+            categoryList.appendChild(li);
+            categoryForm.reset();
+        });
+
+        productForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const id = document.getElementById('productId').value;
+            const name = document.getElementById('productName').value;
+            const price = document.getElementById('productPrice').value;
+            const oldPrice = document.getElementById('productOldPrice').value;
+            const categoryId = document.getElementById('productCategory').value;
+            const description = document.getElementById('productDesc').value;
+            const image = document.getElementById('productImage').value;
+            
+            const category = categories.find(cat => cat.id === categoryId);
+            const categoryName = category ? category.name : 'Unknown';
+            
+            const li = document.createElement('li');
+            li.innerHTML = `<strong>ID: ${id}</strong> - ${name} - $${price} (Old: $${oldPrice})<br>
+                            Category: ${categoryName}<br>
+                            ${description}<br>
+                            <img src="${image}" alt="${name}" width="100">`;
+            productList.appendChild(li);
+            productForm.reset();
+        });
+    </script>
+</body>
+</html>
+
+<script>
+    const cate_infor = document.getElementById("category");
+    const product_infor = document.getElementById("product");
+    const select_category = document.getElementById("product-category");
+    const productList = document.querySelector(".product-detail");
+
+    let categories = [];
+    let products = [];
+
+    function generateRandomId() {
+        return Math.random().toString(36).substr(2, 9);
+    }
+
+    cate_infor.addEventListener("submit", function (event) {
+        event.preventDefault();
+        const name_cate = document.getElementById("category-name").value;
+        const desc_cate = document.getElementById("category-description").value;
+        const id_cate = generateRandomId();
+        categories.push({ id_cate, name_cate });
+
+        const option = document.createElement("option");
+        option.value = id_cate;
+        option.textContent = name_cate;
+        select_category.appendChild(option);
+        console.log(categories);
+    });
+
+    product_infor.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const name = document.getElementById("product-name").value;
+        const price = document.getElementById("product-price").value;
+        const oldPrice = document.getElementById("product-oldPrice").value;
+        const category_id_list = document.getElementById("product-category").value;
+        const desc = document.getElementById("product-description").value;
+        const img = document.getElementById("product-image").value;
+
+        const category = categories.find(cat => cat.id_cate === category_id_list);
+        const categoryName = category ? category.name_cate : 'Unknown';
+
+        const product = {
+            id: generateRandomId(),
+            name,
+            price,
+            oldPrice,
+            categoryId: category_id_list,
+            categoryName,
+            description: desc,
+            image: img
+        };
+
+        products.push(product);
+        displayProducts();
+    });
+
+    function displayProducts() {
+        productList.innerHTML = ""; // Clear previous products
+        products.forEach(product => {
+            const productHTML = `
+                <div class="product-container">
+                    <img src="${product.image}" alt="${product.name}">
+                    <p class="pro-id">Name: ${product.name}</p>
+                    <p class="cate-id">Category: ${product.categoryName}</p>
+                    <p class="pro-price">Price: $${product.price}</p>
+                    <p class="pro-des">Description: ${product.description}</p>
+                </div>
+            `;
+            productList.innerHTML += productHTML;
+        });
+    }
+</script>

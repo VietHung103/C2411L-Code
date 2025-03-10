@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+</head>
+
+<body>
+    <div class="container">
+        <h2>Category Form</h2>
+        <form action="" class="category" id="category">
+            <label for="category-name">Name:</label>
+            <input type="text" id="category-name" name="category-name" placeholder="Category Name" required />
+            <label for="category-description">Description:</label>
+            <input type="text" id="category-description" name="category-description" placeholder="Description" />
+            <label for="cate-id">ID:</label>
+            <input type="text" id="cate-id" placeholder="ID" name="cate-id">
+            <button type="submit">Add Category</button>
+        </form>
+        <h2>Product Form</h2>
+        <form action="" class="product" id="product">
+            <input type="text" id="product-id" placeholder="ID:" required/>
+            <input type="text" id="product-name" placeholder="Product Name" required />
+            <input type="number" id="product-price" placeholder="Price" required />
+            <input type="number" id="product-oldPrice" placeholder="Old Price" />
+            <select id="product-category">
+                <option value="">Select Category</option>
+            </select>
+            <input type="text" id="product-description" placeholder="Description" />
+            <input type="url" id="product-image" placeholder="Image URL" />
+            <button type="submit">Add Product</button>
+        </form>
+        <script>
+            const cate_infor = document.getElementById("category");
+            const product_infor = document.getElementById("product");
+            const select_category = document.getElementById("product-category");
+            const productList = document.querySelector(".product-detail");
+        
+            let categories = [];
+            let products = [];
+        
+            function generateRandomId() {
+                return Math.random().toString(36).substr(2, 9);
+            }
+        
+            cate_infor.addEventListener("submit", function (event) {
+                event.preventDefault();
+                const name_cate = document.getElementById("category-name").value;
+                const desc_cate = document.getElementById("category-description").value;
+                const id_cate = generateRandomId();
+                categories.push({ id_cate, name_cate });
+        
+                const option = document.createElement("option");
+                option.value = id_cate;
+                option.textContent = name_cate;
+                select_category.appendChild(option);
+                console.log(categories);
+            });
+        
+            product_infor.addEventListener("submit", function (event) {
+                event.preventDefault();
+        
+                const name = document.getElementById("product-name").value;
+                const price = document.getElementById("product-price").value;
+                const oldPrice = document.getElementById("product-oldPrice").value;
+                const category_id_list = document.getElementById("product-category").value;
+                const desc = document.getElementById("product-description").value;
+                const img = document.getElementById("product-image").value;
+        
+                const category = categories.find(cat => cat.id_cate === category_id_list);
+                const categoryName = category ? category.name_cate : 'Unknown';
+        
+                const product = {
+                    id: generateRandomId(),
+                    name,
+                    price,
+                    oldPrice,
+                    categoryId: category_id_list,
+                    categoryName,
+                    description: desc,
+                    image: img
+                };
+        
+                products.push(product);
+                displayProducts();
+            });
+        
+            function displayProducts() {
+                productList.innerHTML = ""; // Clear previous products
+                products.forEach(product => {
+                    const productHTML = `
+                        <div class="product-container">
+                            <img src="${product.image}" alt="${product.name}">
+                            <p class="pro-id">Name: ${product.name}</p>
+                            <p class="cate-id">Category: ${product.categoryName}</p>
+                            <p class="pro-price">Price: $${product.price}</p>
+                            <p class="pro-des">Description: ${product.description}</p>
+                        </div>
+                    `;
+                    productList.innerHTML += productHTML;
+                });
+            }
+        </script>
+    </div>
+    <header class="header">
+        <div class="navigator">
+            <div class="nav-left">
+                <h3>2022 FSCI</h3>
+                <div class="nav-content">
+                    <ul>
+                        <li>Men</li>
+                        <li>Women</li>
+                        <li>Objects</li>
+                        <li>Journal</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="nav-right">
+                <ul>
+                    <li>Login</li>
+                    <div class="verticall--divider"></div>
+                    <li>Help</li>
+                    <div class="verticall--divider"></div>
+                    <li>Contact Us</li>
+                    <div class="verticall--divider"></div>
+                    <li><i class="fa-solid fa-cart-shopping"></i></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <div class="product-list">
+        <div class="nav-product">
+            <ul >
+                <li class="nv">Men</li>
+                <li class="nv">Women</li>
+                <li class="nv">Objects</li>
+            </ul>
+        </div>
+        <div class="product-detail">
+            <div class="product-container">
+                <img src="" alt="">
+                <p class="pro-name">Name:</p>
+                <p class="cate-id">Category Type:</p>
+                <p class="pro-price">Price:</p>
+                <p class="pro-des">Description:</p>
+            </div>
+            <div class="product-container">
+                <img src="" alt="">
+                <p class="pro-id">Name:</p>
+                <p class="cate-id">Category Type:</p>
+                <p class="pro-price">Price:</p>
+                <p class="pro-des">Description:</p>
+            </div>
+            <div class="product-container">
+                <img src="" alt="">
+                <p class="pro-id">Name:</p>
+                <p class="cate-id">Category ID:</p>
+                <p class="pro-price">Price:</p>
+                <p class="pro-des">Description:</p>
+            </div>
+            <div class="product-container">
+                <img src="" alt="">
+                <p class="pro-id">Name:</p>
+                <p class="cate-id">Category ID:</p>
+                <p class="pro-price">Price:</p>
+                <p class="pro-des">Description:</p>
+            </div>
+            <div class="product-container">
+                <img src="" alt="">
+                <p class="pro-id">Name:</p>
+                <p class="cate-id">Category ID:</p>
+                <p class="pro-price">Price:</p>
+                <p class="pro-des">Description:</p>
+            </div>
+            <div class="product-container">
+                <img src="" alt="">
+                <p class="pro-id">Name:</p>
+                <p class="cate-id">Category ID:</p>
+                <p class="pro-price">Price:</p>
+                <p class="pro-des">Description:</p>
+            </div>
+            <div class="product-container">
+                <img src="" alt="">
+                <p class="pro-id">Name:</p>
+                <p class="cate-id">Category ID:</p>
+                <p class="pro-price">Price:</p>
+                <p class="pro-des">Description:</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
