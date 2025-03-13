@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+</head>
+<body>
+    <div class="container">
+        <h2>Category Form</h2>
+        <form action="" class="category" id="category">
+            <label for="category-name">Name:</label>
+            <input type="text" id="category-name" name="category-name" placeholder="Category Name" required />
+            <label for="category-description">Description:</label>
+            <input type="text" id="category-description" name="category-description" placeholder="Description" />
+            <label for="cate-id">ID:</label>
+            <input type="text" id="cate-id" placeholder="ID" name="cate-id">
+            <button type="submit">Add Category</button>
+        </form>
+        <h2>Product Form</h2>
+        <form action="" class="product" id="product">
+            <input type="text" id="product-id" placeholder="ID:" required/>
+            <input type="text" id="product-name" placeholder="Product Name" required />
+            <input type="number" id="product-price" placeholder="Price" required />
+            <input type="number" id="product-oldPrice" placeholder="Old Price" />
+            <select id="product-category">
+                <option value="">Select Category</option>
+            </select>
+            <input type="text" id="product-description" placeholder="Description" />
+            <input type="url" id="product-image" placeholder="Image URL" />
+            <button type="submit">Add Product</button>
+        </form>
+        </div>
+        <script>
+            $(document).ready(function(){
+                let categories = [];
+                let products = [];
+
+                function generateRandomId(){
+                    return Math.random().toString(36).substr(2,9);
+                }
+
+                $("#category").submit(function(event){
+                    event.preventDefault();
+
+                    const name_cate = $("#category-name").val();
+                    const desc_cate = $("#category-description").val();
+                    const id_cate = generateRandomId();
+
+                    categories.push({id_cate, name_cate});
+
+                    $("#product-category").append(
+                        `<option value="${id_cate}">${name_cate}</option>`
+                    );
+                    console.log(categories);
+                });
+                $("#product").submit(function (event){
+                    event.preventDefault();
+
+                    let name = $("#product-name").val();
+                    let price = $("#product-price").val();
+                    let oldPrice = $("#product-oldPrice").val();
+                    let category_id_list = $("#product-category").val();
+                    let desc = $("#product-description").val();
+                    let img = $("#product-image").val();
+
+                    let category = categories.find(cat => cat.id_cate === category_id_list);
+                    let categoryName = category? category.name_cate : 'Unknown';
+
+                    products.push({
+                        id: generateRandomId(),
+                        name,
+                        price,
+                        oldPrice,
+                        categoryId: category_id_list,
+                        categoryName,
+                        description: desc,
+                        image: img
+                    });
+                    console.log(products);
+                    displayProducts();
+                });
+                function displayProducts(){
+                    $(".product-detail").empty();
+                    $.each(products, function(index, product){
+                        let productHTML = `
+                        <div class="product-container">
+                            <img src="${product.image}" alt="${product.name}">
+                            <p class="pro-id">Name: ${product.name}</p>
+                            <p class="cate-id">Category: ${product.categoryName}</p>
+                            <p class="pro-price">Price: $${product.price}</p>
+                            <p class="pro-des">Description: ${product.description}</p>
+                        </div>
+                        `;
+                        $(".product-detail").append(productHTML);
+                    });
+                }
+            });
+        </script>
+        <header class="header">
+            <div class="navigator">
+                <div class="nav-left">
+                    <h3>2022 FSCI</h3>
+                    <div class="nav-content">
+                        <ul>
+                            <li>Men</li>
+                            <li>Women</li>
+                            <li>Objects</li>
+                            <li>Journal</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="nav-right">
+                    <ul>
+                        <li>Login</li>
+                        <div class="verticall--divider"></div>
+                        <li>Help</li>
+                        <div class="verticall--divider"></div>
+                        <li>Contact Us</li>
+                        <div class="verticall--divider"></div>
+                        <li><i class="fa-solid fa-cart-shopping"></i></li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+        <div class="product-list">
+            <div class="nav-product">
+                <ul >
+                    <li class="nv">Men</li>
+                    <li class="nv">Women</li>
+                    <li class="nv">Objects</li>
+                </ul>
+            </div>
+            <div class="product-detail">
+                <div class="product-container">
+                    <img src="" alt="">
+                    <p class="pro-name">Name:</p>
+                    <p class="cate-id">Category Type:</p>
+                    <p class="pro-price">Price:</p>
+                    <p class="pro-des">Description:</p>
+                </div>
+                <div class="product-container">
+                    <img src="" alt="">
+                    <p class="pro-id">Name:</p>
+                    <p class="cate-id">Category Type:</p>
+                    <p class="pro-price">Price:</p>
+                    <p class="pro-des">Description:</p>
+                </div>
+                <div class="product-container">
+                    <img src="" alt="">
+                    <p class="pro-id">Name:</p>
+                    <p class="cate-id">Category ID:</p>
+                    <p class="pro-price">Price:</p>
+                    <p class="pro-des">Description:</p>
+                </div>
+                <div class="product-container">
+                    <img src="" alt="">
+                    <p class="pro-id">Name:</p>
+                    <p class="cate-id">Category ID:</p>
+                    <p class="pro-price">Price:</p>
+                    <p class="pro-des">Description:</p>
+                </div>
+                <div class="product-container">
+                    <img src="" alt="">
+                    <p class="pro-id">Name:</p>
+                    <p class="cate-id">Category ID:</p>
+                    <p class="pro-price">Price:</p>
+                    <p class="pro-des">Description:</p>
+                </div>
+                <div class="product-container">
+                    <img src="" alt="">
+                    <p class="pro-id">Name:</p>
+                    <p class="cate-id">Category ID:</p>
+                    <p class="pro-price">Price:</p>
+                    <p class="pro-des">Description:</p>
+                </div>
+                <div class="product-container">
+                    <img src="" alt="">
+                    <p class="pro-id">Name:</p>
+                    <p class="cate-id">Category ID:</p>
+                    <p class="pro-price">Price:</p>
+                    <p class="pro-des">Description:</p>
+                </div>
+            </div>
+        </div>
+</body>
+</html>

@@ -1,0 +1,119 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.container {
+    max-width: 600px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px #ccc;
+
+}
+
+h2 {
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+input, select, button {
+    padding: 10px;
+    font-size: 16px;
+}
+
+button {
+    background-color: rgb(114,114,114);
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: grey  ;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    background: #ddd;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 5px;
+}
+.header{
+    margin-top: 20px;
+    background-image: url(https://i.pinimg.com/736x/d3/14/d7/d314d796a18a4f4e37fa94a0314c5762.jpg);
+    align-items: center;
+    display: flex;
+    width: 100%;
+    height: auto;
+    box-shadow: 1px 1px 1px #ddd;
+}
+.navigator{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+.nav-left{
+    display: flex;
+    gap: 40px;
+    padding: 20px 20px;
+    align-items: center;
+}
+.nav-content ul{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+.nav-right ul{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    padding: 20px 20px;
+}
+.verticall--divider{
+    height: 18px;
+    margin: 0px 12px;
+    border: 1px solid white;
+}
+.nav-product ul{
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    color: grey;
+}
+.nv:hover{
+    color: black;
+}
+.product-detail{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    padding: 20px 40px;
+    gap: 20px;
+    background-color: rgb(191,191,191);
+    justify-content: space-between;
+}
+.product-container{
+    background-color: rgba(226, 226, 226, 0.81);
+    padding: 10px 20px;
+    width: 250px;
+}
+.product-container img{
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    padding: 10px 5px;
+}
